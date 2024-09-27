@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chess-board {
+    display: flex;
+    flex-direction: column;
+    height: 40em;
+    width: 40em;
+    border: 1px solid black;
+    box-shadow: 0 0 5px black;
+}
+.grid-row {
+    display: flex;
+}
+
+.grid-cell {
+    flex: 1;
+    border: 1px solid gray;
+    aspect-ratio: 1/1;
+}
+
