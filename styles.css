@@ -17,16 +17,16 @@ body {
     flex-direction: column;
     height: 40em;
     width: 40em;
-    border: 1px solid black;
-    box-shadow: 0 0 5px black;
+    border: 10px solid green;
+    box-shadow: 0 0 10px black;
 }
+
 .grid-row {
     display: flex;
 }
 
 .grid-cell {
     flex: 1;
-    border: 1px solid gray;
     aspect-ratio: 1/1;
 }
 
