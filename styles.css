@@ -28,6 +28,7 @@ body {
 .grid-cell {
     flex: 1;
     aspect-ratio: 1/1;
+    user-select: none;
 
     display: flex;
     justify-content: center;
