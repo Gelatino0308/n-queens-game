@@ -1,5 +1,6 @@
 const board = document.querySelector("#chess-board");
 const cellArr = [];
+const hasQueen = [];
 let boardSize = 8;
 
 for (let i = 0; i < boardSize; i++){
@@ -19,6 +20,7 @@ for (let i = 0; i < boardSize; i++){
         }
 
         cellArr.push(cell);
+        hasQueen[cellArr.indexOf(cell)] = false;
         row.appendChild(cell);
     }
 }
