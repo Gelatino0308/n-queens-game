@@ -24,3 +24,16 @@ for (let i = 0; i < boardSize; i++){
         row.appendChild(cell);
     }
 }
+
+board.addEventListener('dblclick', (e) => {
+    e.preventDefault();
+    targetCell = e.target;
+    const index = cellArr.indexOf(targetCell);
+
+    const queenImg = document.createElement("img");
+    queenImg.src = "queen.svg";
+    queenImg.setAttribute("width", "70px");
+    queenImg.setAttribute("height", "70px");
+    targetCell.appendChild(queenImg);
+    hasQueen[index] = true;
+});
