@@ -32,8 +32,8 @@ board.addEventListener('dblclick', (e) => {
 
     const queenImg = document.createElement("img");
     queenImg.src = "queen.svg";
-    queenImg.setAttribute("width", "70px");
-    queenImg.setAttribute("height", "70px");
+    
+    queenImg.classList.add("queenIcon");
     targetCell.appendChild(queenImg);
     hasQueen[index] = true;
 });
