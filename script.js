@@ -27,13 +27,19 @@ for (let i = 0; i < boardSize; i++){
 
 board.addEventListener('dblclick', (e) => {
     e.preventDefault();
-    targetCell = e.target;
+    const targetCell = e.target.classList.contains('queenIcon') ? e.target.parentElement : e.target;
     const index = cellArr.indexOf(targetCell);
 
-    const queenImg = document.createElement("img");
-    queenImg.src = "queen.svg";
-    
-    queenImg.classList.add("queenIcon");
-    targetCell.appendChild(queenImg);
-    hasQueen[index] = true;
+    if (!(hasQueen[index])) {
+        const queenImg = document.createElement("img");
+        queenImg.src = "queen.svg";
+        
+        queenImg.classList.add("queenIcon");
+        targetCell.appendChild(queenImg);
+        hasQueen[index] = true;
+    }
+    else {
+        targetCell.removeChild(targetCell.firstChild);
+        hasQueen[index] = false;
+    }
 });
