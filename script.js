@@ -1,6 +1,5 @@
 const board = document.querySelector("#chess-board");
 const cellArr = [];
-const hasQueen = [];
 let boardSize = 8;
 
 for (let i = 0; i < boardSize; i++){
@@ -20,7 +19,6 @@ for (let i = 0; i < boardSize; i++){
         }
 
         cellArr.push(cell);
-        hasQueen[cellArr.indexOf(cell)] = false;
         row.appendChild(cell);
     }
 }
@@ -28,18 +26,15 @@ for (let i = 0; i < boardSize; i++){
 board.addEventListener('dblclick', (e) => {
     e.preventDefault();
     const targetCell = e.target.classList.contains('queenIcon') ? e.target.parentElement : e.target;
-    const index = cellArr.indexOf(targetCell);
 
-    if (!(hasQueen[index])) {
+    if (!(targetCell.hasChildNodes())) {
         const queenImg = document.createElement("img");
         queenImg.src = "queen.svg";
         
         queenImg.classList.add("queenIcon");
         targetCell.appendChild(queenImg);
-        hasQueen[index] = true;
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
-        hasQueen[index] = false;
     }
 });
