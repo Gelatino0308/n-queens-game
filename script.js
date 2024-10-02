@@ -35,6 +35,8 @@ board.addEventListener('dblclick', (e) => {
         
         queenImg.classList.add("queenIcon");
         targetCell.appendChild(queenImg);
+
+        highlightQueenRange(targetCell);
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
@@ -47,5 +49,12 @@ function findTargetIndexes (target) {
         if (colIndex !== -1){
             return { rowIndex, colIndex };
         }
+    }
+}
+
+function highlightQueenRange(targetCell) {
+    let {rowIndex, colIndex} = findTargetIndexes(targetCell);
+    for (let r = 0; r < boardSize; r++) {
+        cellArr[r][colIndex].style.backgroundColor = "red";
     }
 }
