@@ -1,11 +1,12 @@
 const board = document.querySelector("#chess-board");
-const cellArr = [];
 let boardSize = 8;
+const cellArr = [];
 
 for (let i = 0; i < boardSize; i++){
     const row =  document.createElement("div");
     row.classList.add("grid-row");
     board.appendChild(row);
+    const rowArr = [];
 
     for (let j = 0; j < boardSize; j++) {
         const cell = document.createElement("div");
@@ -18,9 +19,10 @@ for (let i = 0; i < boardSize; i++){
             cell.classList.add("lightcells");
         }
 
-        cellArr.push(cell);
+        rowArr.push(cell);
         row.appendChild(cell);
     }
+    cellArr.push(rowArr);
 }
 
 board.addEventListener('dblclick', (e) => {
