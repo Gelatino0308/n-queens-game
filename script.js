@@ -40,3 +40,12 @@ board.addEventListener('dblclick', (e) => {
         targetCell.removeChild(targetCell.firstChild);
     }
 });
+
+function findTargetIndexes (target) {
+    for (let rowIndex = 0; rowIndex < cellArr.length; rowIndex++) {
+        let colIndex = cellArr[rowIndex].indexOf(target);
+        if (colIndex !== -1){
+            return { rowIndex, colIndex };
+        }
+    }
+}
