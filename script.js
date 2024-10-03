@@ -67,7 +67,7 @@ function highlightQueenRange(targetCell) {
         startRowIndex = indexDifference;
     }
     else {
-        startColIndex = abs(indexDifference);
+        startColIndex = Math.abs(indexDifference);
     }
 
     while (startRowIndex <= 7 && startColIndex <= 7) {
