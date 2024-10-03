@@ -69,4 +69,11 @@ function highlightQueenRange(targetCell) {
     else {
         startColIndex = abs(indexDifference);
     }
+
+    while (startRowIndex <= 7 && startColIndex <= 7) {
+        console.log(cellArr[startRowIndex][startColIndex]);
+        cellArr[startRowIndex][startColIndex].style.backgroundColor = "red";
+        startRowIndex += 1;
+        startColIndex += 1;
+    }
 }
