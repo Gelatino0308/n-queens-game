@@ -58,4 +58,15 @@ function highlightQueenRange(targetCell) {
         cellArr[i][colIndex].style.backgroundColor = "red";
         cellArr[rowIndex][i].style.backgroundColor = "red";
     }
+
+    const indexDifference = rowIndex - colIndex;
+    let startRowIndex = 0;
+    let startColIndex = 0;
+
+    if (indexDifference >= 0) {
+        startRowIndex = indexDifference;
+    }
+    else {
+        startColIndex = abs(indexDifference);
+    }
 }
