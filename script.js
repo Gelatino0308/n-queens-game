@@ -54,7 +54,8 @@ function findTargetIndexes (target) {
 
 function highlightQueenRange(targetCell) {
     let {rowIndex, colIndex} = findTargetIndexes(targetCell);
-    for (let r = 0; r < boardSize; r++) {
-        cellArr[r][colIndex].style.backgroundColor = "red";
+    for (let i = 0; i < boardSize; i++) {
+        cellArr[i][colIndex].style.backgroundColor = "red";
+        cellArr[rowIndex][i].style.backgroundColor = "red";
     }
 }
