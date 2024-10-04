@@ -88,7 +88,7 @@ function highlightQueenRange(targetCell) {
         startRowIndex = indexSum - 7;
     }
 
-    while (startRowIndex <= 7 || startColIndex >= 0) {
+    while (startRowIndex <= 7 && startColIndex >= 0) {
         console.log(cellArr[startRowIndex][startColIndex]);
         cellArr[startRowIndex][startColIndex].style.backgroundColor = "red";
         startRowIndex += 1;
