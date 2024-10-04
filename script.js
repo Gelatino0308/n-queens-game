@@ -53,15 +53,21 @@ function findTargetIndexes (target) {
 }
 
 function highlightQueenRange(targetCell) {
+
     let {rowIndex, colIndex} = findTargetIndexes(targetCell);
+
     for (let i = 0; i < boardSize; i++) {
         cellArr[i][colIndex].style.backgroundColor = "red";
         cellArr[rowIndex][i].style.backgroundColor = "red";
     }
 
-    let startRowIndex = 0;
-    let startColIndex = 0;
-    const indexDifference = rowIndex - colIndex;
+    highlightL2RDiagonal(rowIndex, colIndex, 0, 0);
+    highlightR2LDiagonal(rowIndex, colIndex, 0, 7);
+
+}
+
+function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
+    const indexDifference = row - col;
 
     if (indexDifference >= 0) {
         startRowIndex = indexDifference;
@@ -76,10 +82,11 @@ function highlightQueenRange(targetCell) {
         startRowIndex += 1;
         startColIndex += 1;
     }
+}
 
-    startRowIndex = 0;
-    startColIndex = 7;
-    const indexSum = rowIndex + colIndex;
+
+function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
+    const indexSum = row + col;
 
     if (indexSum <= 7) {
         startColIndex = indexSum;
