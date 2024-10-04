@@ -59,9 +59,9 @@ function highlightQueenRange(targetCell) {
         cellArr[rowIndex][i].style.backgroundColor = "red";
     }
 
-    const indexDifference = rowIndex - colIndex;
     let startRowIndex = 0;
     let startColIndex = 0;
+    const indexDifference = rowIndex - colIndex;
 
     if (indexDifference >= 0) {
         startRowIndex = indexDifference;
@@ -75,5 +75,23 @@ function highlightQueenRange(targetCell) {
         cellArr[startRowIndex][startColIndex].style.backgroundColor = "red";
         startRowIndex += 1;
         startColIndex += 1;
+    }
+
+    startRowIndex = 0;
+    startColIndex = 7;
+    const indexSum = rowIndex + colIndex;
+
+    if (indexSum <= 7) {
+        startColIndex = indexSum;
+    }
+    else {
+        startRowIndex = indexSum - 7;
+    }
+
+    while (startRowIndex <= 7 || startColIndex >= 0) {
+        console.log(cellArr[startRowIndex][startColIndex]);
+        cellArr[startRowIndex][startColIndex].style.backgroundColor = "red";
+        startRowIndex += 1;
+        startColIndex -= 1;
     }
 }
