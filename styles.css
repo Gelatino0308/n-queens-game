@@ -43,6 +43,10 @@ body {
     background-color: lightgoldenrodyellow;
 }
 
+.inRangeCells {
+    background-color: red;
+}
+
 .queenIcon {
     width: 70px;
     height: 70px;

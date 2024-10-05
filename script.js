@@ -57,8 +57,9 @@ function highlightQueenRange(targetCell) {
     let {rowIndex, colIndex} = findTargetIndexes(targetCell);
 
     for (let i = 0; i < boardSize; i++) {
-        cellArr[i][colIndex].style.backgroundColor = "red";
-        cellArr[rowIndex][i].style.backgroundColor = "red";
+        // cellArr[i][colIndex].style.backgroundColor = "red";
+        cellArr[i][colIndex].classList.add("inRangeCells");
+        cellArr[rowIndex][i].classList.add("inRangeCells");
     }
 
     highlightL2RDiagonal(rowIndex, colIndex, 0, 0);
@@ -78,7 +79,7 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
 
     while (startRowIndex <= 7 && startColIndex <= 7) {
         console.log(cellArr[startRowIndex][startColIndex]);
-        cellArr[startRowIndex][startColIndex].style.backgroundColor = "red";
+        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex += 1;
     }
@@ -97,7 +98,7 @@ function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
 
     while (startRowIndex <= 7 && startColIndex >= 0) {
         console.log(cellArr[startRowIndex][startColIndex]);
-        cellArr[startRowIndex][startColIndex].style.backgroundColor = "red";
+        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex -= 1;
     }
