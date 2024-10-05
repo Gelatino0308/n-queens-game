@@ -30,7 +30,7 @@ board.addEventListener('dblclick', (e) => {
     e.preventDefault();
     const targetCell = e.target.classList.contains('queenIcon') ? e.target.parentElement : e.target;
     hasQueen = !hasQueen;
-    
+
     if (!(targetCell.hasChildNodes())) {
         const queenImg = document.createElement("img");
         queenImg.src = "queen.svg";
@@ -70,12 +70,12 @@ function highlightQueenRange(targetCell, hasQueen) {
         }
     }
 
-    highlightL2RDiagonal(rowIndex, colIndex, 0, 0);
-    highlightR2LDiagonal(rowIndex, colIndex, 0, 7);
+    highlightL2RDiagonal(rowIndex, colIndex, 0, 0, hasQueen);
+    highlightR2LDiagonal(rowIndex, colIndex, 0, 7, hasQueen);
 
 }
 
-function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
+function highlightL2RDiagonal (row, col, startRowIndex, startColIndex, hasQueen) {
     const indexDifference = row - col;
 
     if (indexDifference >= 0) {
@@ -87,14 +87,19 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
 
     while (startRowIndex <= 7 && startColIndex <= 7) {
         // console.log(cellArr[startRowIndex][startColIndex]);
-        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
+        if (hasQueen) {
+            cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
+        }
+        else {
+            cellArr[startRowIndex][startColIndex].classList.remove("inRangeCells");
+        }
         startRowIndex += 1;
         startColIndex += 1;
     }
 }
 
 
-function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
+function highlightR2LDiagonal (row, col, startRowIndex, startColIndex, hasQueen) {
     const indexSum = row + col;
 
     if (indexSum <= 7) {
@@ -106,7 +111,12 @@ function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
 
     while (startRowIndex <= 7 && startColIndex >= 0) {
         // console.log(cellArr[startRowIndex][startColIndex]);
-        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
+        if (hasQueen){
+            cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
+        }
+        else {
+            cellArr[startRowIndex][startColIndex].classList.remove("inRangeCells");
+        }
         startRowIndex += 1;
         startColIndex -= 1;
     }
