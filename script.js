@@ -1,6 +1,7 @@
 const board = document.querySelector("#chess-board");
 let boardSize = 8;
 const cellArr = [];
+let hasQueen = false;
 
 for (let i = 0; i < boardSize; i++){
     const row =  document.createElement("div");
@@ -28,7 +29,8 @@ for (let i = 0; i < boardSize; i++){
 board.addEventListener('dblclick', (e) => {
     e.preventDefault();
     const targetCell = e.target.classList.contains('queenIcon') ? e.target.parentElement : e.target;
-
+    hasQueen = !hasQueen;
+    
     if (!(targetCell.hasChildNodes())) {
         const queenImg = document.createElement("img");
         queenImg.src = "queen.svg";
@@ -36,10 +38,11 @@ board.addEventListener('dblclick', (e) => {
         queenImg.classList.add("queenIcon");
         targetCell.appendChild(queenImg);
 
-        highlightQueenRange(targetCell);
+        highlightQueenRange(targetCell, hasQueen);
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
+        highlightQueenRange(targetCell, hasQueen);
     }
 });
 
@@ -52,14 +55,19 @@ function findTargetIndexes (target) {
     }
 }
 
-function highlightQueenRange(targetCell) {
+function highlightQueenRange(targetCell, hasQueen) {
 
     let {rowIndex, colIndex} = findTargetIndexes(targetCell);
 
     for (let i = 0; i < boardSize; i++) {
-        // cellArr[i][colIndex].style.backgroundColor = "red";
-        cellArr[i][colIndex].classList.add("inRangeCells");
-        cellArr[rowIndex][i].classList.add("inRangeCells");
+        if (hasQueen) {
+            cellArr[i][colIndex].classList.add("inRangeCells");
+            cellArr[rowIndex][i].classList.add("inRangeCells");
+        }
+        else {
+            cellArr[i][colIndex].classList.remove("inRangeCells");
+            cellArr[rowIndex][i].classList.remove("inRangeCells");
+        }
     }
 
     highlightL2RDiagonal(rowIndex, colIndex, 0, 0);
@@ -78,7 +86,7 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
     }
 
     while (startRowIndex <= 7 && startColIndex <= 7) {
-        console.log(cellArr[startRowIndex][startColIndex]);
+        // console.log(cellArr[startRowIndex][startColIndex]);
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex += 1;
@@ -97,7 +105,7 @@ function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
     }
 
     while (startRowIndex <= 7 && startColIndex >= 0) {
-        console.log(cellArr[startRowIndex][startColIndex]);
+        // console.log(cellArr[startRowIndex][startColIndex]);
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex -= 1;
