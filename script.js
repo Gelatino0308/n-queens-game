@@ -1,7 +1,6 @@
 const board = document.querySelector("#chess-board");
 let boardSize = 8;
 const cellArr = [];
-let hasQueen = false;
 
 for (let i = 0; i < boardSize; i++){
     const row =  document.createElement("div");
@@ -29,20 +28,20 @@ for (let i = 0; i < boardSize; i++){
 board.addEventListener('dblclick', (e) => {
     e.preventDefault();
     const targetCell = e.target.classList.contains('queenIcon') ? e.target.parentElement : e.target;
-    hasQueen = !hasQueen;
+    const hasQueen = targetCell.hasChildNodes();
 
-    if (!(targetCell.hasChildNodes())) {
+    if (!hasQueen) {
         const queenImg = document.createElement("img");
         queenImg.src = "queen.svg";
         
         queenImg.classList.add("queenIcon");
         targetCell.appendChild(queenImg);
 
-        highlightQueenRange(targetCell, hasQueen);
+        highlightQueenRange(targetCell, !hasQueen);
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
-        highlightQueenRange(targetCell, hasQueen);
+        highlightQueenRange(targetCell, !hasQueen);
     }
 });
 
@@ -57,7 +56,7 @@ function findTargetIndexes (target) {
 
 function highlightQueenRange(targetCell, hasQueen) {
 
-    let {rowIndex, colIndex} = findTargetIndexes(targetCell);
+    const {rowIndex, colIndex} = findTargetIndexes(targetCell);
 
     for (let i = 0; i < boardSize; i++) {
         if (hasQueen) {
