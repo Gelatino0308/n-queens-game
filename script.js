@@ -120,3 +120,11 @@ function highlightR2LDiagonal (row, col, startRowIndex, startColIndex, hasQueen)
         startColIndex -= 1;
     }
 }
+
+function clearAllHighlights() {
+    for (let i = 0; i < boardSize; i++) {
+        for (let j = 0; j < boardSize; j++) {
+            cellArr[i][j].classList.remove("inRangeCells");
+        }
+    }
+}
