@@ -1,6 +1,7 @@
 const board = document.querySelector("#chess-board");
 let boardSize = 8;
 const cellArr = [];
+const positionArr = [];
 
 for (let i = 0; i < boardSize; i++){
     const row =  document.createElement("div");
@@ -37,12 +38,24 @@ board.addEventListener('dblclick', (e) => {
         queenImg.classList.add("queenIcon");
         targetCell.appendChild(queenImg);
 
-        highlightQueenRange(targetCell, !hasQueen);
+        const { rowIndex, colIndex } = findTargetIndexes(targetCell);
+        positionArr.push({ rowIndex, colIndex });
+        highlightQueenRange(rowIndex, colIndex, !hasQueen);
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
-        highlightQueenRange(targetCell, !hasQueen);
+        const { rowIndex, colIndex } = findTargetIndexes(targetCell);
+        positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex || loc.colIndex !== colIndex); 
+
+        clearAllHighlights();
+
+        positionArr.forEach(({ rowIndex, colIndex}) => {
+            highlightQueenRange(rowIndex, colIndex, !hasQueen);
+        });
     }
+    
+
+
 });
 
 function findTargetIndexes (target) {
@@ -54,24 +67,23 @@ function findTargetIndexes (target) {
     }
 }
 
-function highlightQueenRange(targetCell, hasQueen) {
+function highlightQueenRange(rowIdx, colIdx, hasQueen) {
 
     const {rowIndex, colIndex} = findTargetIndexes(targetCell);
 
     for (let i = 0; i < boardSize; i++) {
         if (hasQueen) {
-            cellArr[i][colIndex].classList.add("inRangeCells");
-            cellArr[rowIndex][i].classList.add("inRangeCells");
+            cellArr[i][colIdx].classList.add("inRangeCells");
+            cellArr[rowIdx][i].classList.add("inRangeCells");
         }
         else {
-            cellArr[i][colIndex].classList.remove("inRangeCells");
-            cellArr[rowIndex][i].classList.remove("inRangeCells");
+            cellArr[i][colIdx].classList.remove("inRangeCells");
+            cellArr[rowIdx][i].classList.remove("inRangeCells");
         }
     }
 
     highlightL2RDiagonal(rowIndex, colIndex, 0, 0, hasQueen);
     highlightR2LDiagonal(rowIndex, colIndex, 0, 7, hasQueen);
-
 }
 
 function highlightL2RDiagonal (row, col, startRowIndex, startColIndex, hasQueen) {
