@@ -29,6 +29,7 @@ for (let i = 0; i < boardSize; i++){
 board.addEventListener('dblclick', (e) => {
     e.preventDefault();
     const targetCell = e.target.classList.contains('queenIcon') ? e.target.parentElement : e.target;
+    const { rowIndex, colIndex } = findTargetIndexes(targetCell);
     const hasQueen = targetCell.hasChildNodes();
 
     if (!hasQueen) {
@@ -38,16 +39,13 @@ board.addEventListener('dblclick', (e) => {
         queenImg.classList.add("queenIcon");
         targetCell.appendChild(queenImg);
 
-        const { rowIndex, colIndex } = findTargetIndexes(targetCell);
         positionArr.push({ rowIndex, colIndex });
         highlightQueenRange(rowIndex, colIndex);
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
 
-        const { rowIndex, colIndex } = findTargetIndexes(targetCell);
-        positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex && loc.colIndex !== colIndex); 
-
+        positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex || loc.colIndex !== colIndex); 
         clearAllHighlights();
 
         positionArr.forEach(({ rowIndex, colIndex}) => {
@@ -81,13 +79,7 @@ function highlightQueenRange(rowIdx, colIdx) {
 
 function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
     const indexDifference = row - col;
-
-    if (indexDifference >= 0) {
-        startRowIndex = indexDifference;
-    }
-    else {
-        startColIndex = Math.abs(indexDifference);
-    }
+    indexDifference >= 0 ? startRowIndex = indexDifference : startColIndex = Math.abs(indexDifference);
 
     while (startRowIndex <= 7 && startColIndex <= 7) {
         // console.log(cellArr[startRowIndex][startColIndex]);
@@ -100,13 +92,7 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
 
 function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
     const indexSum = row + col;
-
-    if (indexSum <= 7) {
-        startColIndex = indexSum;
-    }
-    else {
-        startRowIndex = indexSum - 7;
-    }
+    indexSum <= 7 ? startColIndex = indexSum : startRowIndex = indexSum - 7;
 
     while (startRowIndex <= 7 && startColIndex >= 0) {
         // console.log(cellArr[startRowIndex][startColIndex]);
