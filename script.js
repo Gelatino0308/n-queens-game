@@ -40,17 +40,18 @@ board.addEventListener('dblclick', (e) => {
 
         const { rowIndex, colIndex } = findTargetIndexes(targetCell);
         positionArr.push({ rowIndex, colIndex });
-        highlightQueenRange(rowIndex, colIndex, !hasQueen);
+        highlightQueenRange(rowIndex, colIndex);
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
+
         const { rowIndex, colIndex } = findTargetIndexes(targetCell);
-        positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex || loc.colIndex !== colIndex); 
+        positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex && loc.colIndex !== colIndex); 
 
         clearAllHighlights();
 
         positionArr.forEach(({ rowIndex, colIndex}) => {
-            highlightQueenRange(rowIndex, colIndex, !hasQueen);
+            highlightQueenRange(rowIndex, colIndex);
         });
     }
     
@@ -67,24 +68,18 @@ function findTargetIndexes (target) {
     }
 }
 
-function highlightQueenRange(rowIdx, colIdx, hasQueen) {
+function highlightQueenRange(rowIdx, colIdx) {
 
     for (let i = 0; i < boardSize; i++) {
-        if (hasQueen) {
-            cellArr[i][colIdx].classList.add("inRangeCells");
-            cellArr[rowIdx][i].classList.add("inRangeCells");
-        }
-        else {
-            cellArr[i][colIdx].classList.remove("inRangeCells");
-            cellArr[rowIdx][i].classList.remove("inRangeCells");
-        }
+        cellArr[i][colIdx].classList.add("inRangeCells");
+        cellArr[rowIdx][i].classList.add("inRangeCells");
     }
 
-    highlightL2RDiagonal(rowIdx, colIdx, 0, 0, hasQueen);
-    highlightR2LDiagonal(rowIdx, colIdx, 0, 7, hasQueen);
+    highlightL2RDiagonal(rowIdx, colIdx, 0, 0);
+    highlightR2LDiagonal(rowIdx, colIdx, 0, 7);
 }
 
-function highlightL2RDiagonal (row, col, startRowIndex, startColIndex, hasQueen) {
+function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
     const indexDifference = row - col;
 
     if (indexDifference >= 0) {
@@ -96,19 +91,14 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex, hasQueen)
 
     while (startRowIndex <= 7 && startColIndex <= 7) {
         // console.log(cellArr[startRowIndex][startColIndex]);
-        if (hasQueen) {
-            cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
-        }
-        else {
-            cellArr[startRowIndex][startColIndex].classList.remove("inRangeCells");
-        }
+        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex += 1;
     }
 }
 
 
-function highlightR2LDiagonal (row, col, startRowIndex, startColIndex, hasQueen) {
+function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
     const indexSum = row + col;
 
     if (indexSum <= 7) {
@@ -120,12 +110,7 @@ function highlightR2LDiagonal (row, col, startRowIndex, startColIndex, hasQueen)
 
     while (startRowIndex <= 7 && startColIndex >= 0) {
         // console.log(cellArr[startRowIndex][startColIndex]);
-        if (hasQueen){
-            cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
-        }
-        else {
-            cellArr[startRowIndex][startColIndex].classList.remove("inRangeCells");
-        }
+        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex -= 1;
     }
