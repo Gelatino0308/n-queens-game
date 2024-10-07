@@ -1,7 +1,7 @@
 const board = document.querySelector("#chess-board");
 let boardSize = 8;
 const cellArr = [];
-const positionArr = [];
+let positionArr = [];
 
 for (let i = 0; i < boardSize; i++){
     const row =  document.createElement("div");
@@ -69,8 +69,6 @@ function findTargetIndexes (target) {
 
 function highlightQueenRange(rowIdx, colIdx, hasQueen) {
 
-    const {rowIndex, colIndex} = findTargetIndexes(targetCell);
-
     for (let i = 0; i < boardSize; i++) {
         if (hasQueen) {
             cellArr[i][colIdx].classList.add("inRangeCells");
@@ -82,8 +80,8 @@ function highlightQueenRange(rowIdx, colIdx, hasQueen) {
         }
     }
 
-    highlightL2RDiagonal(rowIndex, colIndex, 0, 0, hasQueen);
-    highlightR2LDiagonal(rowIndex, colIndex, 0, 7, hasQueen);
+    highlightL2RDiagonal(rowIdx, colIdx, 0, 0, hasQueen);
+    highlightR2LDiagonal(rowIdx, colIdx, 0, 7, hasQueen);
 }
 
 function highlightL2RDiagonal (row, col, startRowIndex, startColIndex, hasQueen) {
