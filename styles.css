@@ -33,6 +33,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px inset black;
 }
 
 .darkcells {
@@ -44,7 +45,8 @@ body {
 }
 
 .inRangeCells {
-    background-color: red;
+    background-color: rgb(255, 0, 0, 0.5);
+    border: 1px inset black;
 }
 
 .queenIcon {
