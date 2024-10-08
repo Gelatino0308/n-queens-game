@@ -33,12 +33,7 @@ board.addEventListener('dblclick', (e) => {
     const hasQueen = targetCell.hasChildNodes();
 
     if (!hasQueen) {
-        const queenImg = document.createElement("img");
-        queenImg.src = "queen.svg";
-        
-        queenImg.classList.add("queenIcon");
-        targetCell.appendChild(queenImg);
-
+        createQueen(targetCell);
         positionArr.push({ rowIndex, colIndex });
         highlightQueenRange(rowIndex, colIndex);
     }
@@ -56,6 +51,13 @@ board.addEventListener('dblclick', (e) => {
 
 
 });
+
+function createQueen (target) {
+    const queenImg = document.createElement("img");
+    queenImg.src = "queen.svg";
+    queenImg.classList.add("queenIcon");
+    target.appendChild(queenImg);
+}
 
 function findTargetIndexes (target) {
     for (let rowIndex = 0; rowIndex < cellArr.length; rowIndex++) {
