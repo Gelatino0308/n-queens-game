@@ -20,8 +20,8 @@ for (let i = 0; i < boardSize; i++){
             cell.classList.add("lightcells");
         }
 
-        rowArr.push(cell);
         row.appendChild(cell);
+        rowArr.push(cell);
     }
     cellArr.push(rowArr);
 }
@@ -39,17 +39,13 @@ board.addEventListener('dblclick', (e) => {
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
-
-        positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex || loc.colIndex !== colIndex); 
         clearAllHighlights();
 
+        positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex || loc.colIndex !== colIndex); 
         positionArr.forEach(({ rowIndex, colIndex}) => {
             highlightQueenRange(rowIndex, colIndex);
         });
     }
-    
-
-
 });
 
 function createQueen (target) {
@@ -68,8 +64,15 @@ function findTargetIndexes (target) {
     }
 }
 
-function highlightQueenRange(rowIdx, colIdx) {
+function clearAllHighlights() {
+    for (let i = 0; i < boardSize; i++) {
+        for (let j = 0; j < boardSize; j++) {
+            cellArr[i][j].classList.remove("inRangeCells");
+        }
+    }
+}
 
+function highlightQueenRange(rowIdx, colIdx) {
     for (let i = 0; i < boardSize; i++) {
         cellArr[i][colIdx].classList.add("inRangeCells");
         cellArr[rowIdx][i].classList.add("inRangeCells");
@@ -84,30 +87,19 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
     indexDifference >= 0 ? startRowIndex = indexDifference : startColIndex = Math.abs(indexDifference);
 
     while (startRowIndex <= 7 && startColIndex <= 7) {
-        // console.log(cellArr[startRowIndex][startColIndex]);
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex += 1;
     }
 }
 
-
 function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
     const indexSum = row + col;
     indexSum <= 7 ? startColIndex = indexSum : startRowIndex = indexSum - 7;
 
     while (startRowIndex <= 7 && startColIndex >= 0) {
-        // console.log(cellArr[startRowIndex][startColIndex]);
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex -= 1;
-    }
-}
-
-function clearAllHighlights() {
-    for (let i = 0; i < boardSize; i++) {
-        for (let j = 0; j < boardSize; j++) {
-            cellArr[i][j].classList.remove("inRangeCells");
-        }
     }
 }
