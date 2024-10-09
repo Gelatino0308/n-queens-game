@@ -1,5 +1,5 @@
 const board = document.querySelector("#chess-board");
-let boardSize = 8;
+let boardSize = 10;
 const cellArr = [];
 let positionArr = [];
 
@@ -79,14 +79,14 @@ function highlightQueenRange(rowIdx, colIdx) {
     }
 
     highlightL2RDiagonal(rowIdx, colIdx, 0, 0);
-    highlightR2LDiagonal(rowIdx, colIdx, 0, 7);
+    highlightR2LDiagonal(rowIdx, colIdx, 0, boardSize - 1);
 }
 
 function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
     const indexDifference = row - col;
     indexDifference >= 0 ? startRowIndex = indexDifference : startColIndex = Math.abs(indexDifference);
 
-    while (startRowIndex <= 7 && startColIndex <= 7) {
+    while (startRowIndex <= boardSize - 1 && startColIndex <= boardSize - 1) {
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex += 1;
@@ -95,9 +95,9 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
 
 function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
     const indexSum = row + col;
-    indexSum <= 7 ? startColIndex = indexSum : startRowIndex = indexSum - 7;
+    indexSum <= boardSize - 1 ? startColIndex = indexSum : startRowIndex = indexSum - (boardSize - 1);
 
-    while (startRowIndex <= 7 && startColIndex >= 0) {
+    while (startRowIndex <= boardSize - 1 && startColIndex >= 0) {
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
         startRowIndex += 1;
         startColIndex -= 1;
