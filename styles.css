@@ -19,6 +19,7 @@ body {
     width: 40em;
     border: 10px solid green;
     box-shadow: 0 0 10px black;
+    overflow: hidden;
 }
 
 .grid-row {
@@ -50,7 +51,7 @@ body {
 }
 
 .queenIcon {
-    width: 70px;
-    height: 70px;
+    width: 90%;
+    height: 90%;
 }
 
