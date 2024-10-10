@@ -48,6 +48,10 @@ body {
 .inRangeCells {
     background-color: rgb(255, 0, 0, 0.5);
     border: 1px inset black;
+
+    font-size: 3em;
+    font-weight: bolder;
+    color: maroon;
 }
 
 .queenIcon {
