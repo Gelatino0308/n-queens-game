@@ -75,6 +75,14 @@ function clearAllHighlights() {
 
 function highlightQueenRange(rowIdx, colIdx) {
     for (let i = 0; i < boardSize; i++) {
+        if (!cellArr[i][colIdx].querySelector("img")) {
+            cellArr[i][colIdx].textContent = "×";
+        }
+
+        if (!cellArr[rowIdx][i].querySelector("img")) {
+            cellArr[rowIdx][i].textContent = "×";
+        }
+
         cellArr[i][colIdx].classList.add("inRangeCells");
         cellArr[rowIdx][i].classList.add("inRangeCells");
     }
