@@ -97,6 +97,10 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
 
     while (startRowIndex <= lastCellIndex && startColIndex <= lastCellIndex) {
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
+        if (!cellArr[startRowIndex][startColIndex].querySelector("img")) {
+            cellArr[startRowIndex][startColIndex].textContent = "×";
+        }
+
         startRowIndex += 1;
         startColIndex += 1;
     }
@@ -108,6 +112,10 @@ function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
 
     while (startRowIndex <= lastCellIndex && startColIndex >= 0) {
         cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
+        if (!cellArr[startRowIndex][startColIndex].querySelector("img")) {
+            cellArr[startRowIndex][startColIndex].textContent = "×";
+        }
+
         startRowIndex += 1;
         startColIndex -= 1;
     }
