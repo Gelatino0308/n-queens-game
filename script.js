@@ -70,6 +70,9 @@ function clearAllHighlights() {
     for (let i = 0; i < boardSize; i++) {
         for (let j = 0; j < boardSize; j++) {
             cellArr[i][j].classList.remove("inRangeCells");
+            if (!cellArr[i][j].querySelector("img")) {
+                cellArr[i][j].textContent = '';
+            }
         }
     }
 }
