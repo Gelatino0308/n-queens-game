@@ -31,7 +31,7 @@ board.addEventListener('dblclick', (e) => {
     e.preventDefault();
     const targetCell = e.target.classList.contains('queenIcon') ? e.target.parentElement : e.target;
     const { rowIndex, colIndex } = findTargetIndexes(targetCell);
-    const hasQueen = targetCell.hasChildNodes();
+    const hasQueen = targetCell.querySelector("img");
 
     if (!hasQueen) {
         createQueen(targetCell);
@@ -53,6 +53,7 @@ function createQueen (target) {
     const queenImg = document.createElement("img");
     queenImg.src = "queen.svg";
     queenImg.classList.add("queenIcon");
+    target.textContent = ''
     target.appendChild(queenImg);
 }
 
