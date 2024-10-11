@@ -1,5 +1,5 @@
 const board = document.querySelector("#chess-board");
-let boardSize = 10;
+let boardSize = 8;
 const lastCellIndex = boardSize - 1;
 const cellArr = [];
 let positionArr = [];
@@ -40,6 +40,7 @@ board.addEventListener('dblclick', (e) => {
     }
     else {
         targetCell.removeChild(targetCell.firstChild);
+        targetCell.style.alignItems = "";
         clearAllHighlights();
 
         positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex || loc.colIndex !== colIndex); 
@@ -53,6 +54,7 @@ function createQueen (target) {
     const queenImg = document.createElement("img");
     queenImg.src = "queen.svg";
     queenImg.classList.add("queenIcon");
+    target.style.alignItems = "flex-end";
     target.textContent = ''
     target.appendChild(queenImg);
 }

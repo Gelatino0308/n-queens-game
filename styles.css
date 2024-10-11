@@ -33,7 +33,7 @@ body {
 
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     border: 1px inset black;
 }
 
