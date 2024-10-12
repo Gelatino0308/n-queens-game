@@ -102,11 +102,7 @@ function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
     indexDifference >= 0 ? startRowIndex = indexDifference : startColIndex = Math.abs(indexDifference);
 
     while (startRowIndex <= lastCellIndex && startColIndex <= lastCellIndex) {
-        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
-        if (!cellArr[startRowIndex][startColIndex].querySelector("img")) {
-            cellArr[startRowIndex][startColIndex].textContent = "×";
-        }
-
+        placeHighlight(startRowIndex, startColIndex);
         startRowIndex += 1;
         startColIndex += 1;
     }
@@ -117,12 +113,15 @@ function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
     indexSum <= lastCellIndex ? startColIndex = indexSum : startRowIndex = indexSum - lastCellIndex;
 
     while (startRowIndex <= lastCellIndex && startColIndex >= 0) {
-        cellArr[startRowIndex][startColIndex].classList.add("inRangeCells");
-        if (!cellArr[startRowIndex][startColIndex].querySelector("img")) {
-            cellArr[startRowIndex][startColIndex].textContent = "×";
-        }
-
+        placeHighlight(startRowIndex, startColIndex);
         startRowIndex += 1;
         startColIndex -= 1;
+    }
+}
+
+function placeHighlight (rowIdx, colIdx) {
+    cellArr[rowIdx][colIdx].classList.add("inRangeCells");
+    if (!cellArr[rowIdx][colIdx].querySelector("img")) {
+        cellArr[rowIdx][colIdx].textContent = "×";
     }
 }
