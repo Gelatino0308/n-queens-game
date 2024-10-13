@@ -12,6 +12,20 @@ body {
     align-items: center;
 }
 
+#option-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+}
+
+#board-panel {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #chess-board {
     display: flex;
     flex-direction: column;
