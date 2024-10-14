@@ -19,6 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: burlywood;
+    min-width: 500px;
 }
 
 #header {
@@ -32,6 +33,7 @@ body {
 }
 
 #board-panel {
+    height: 100vh;
     flex: 3;
     display: flex;
     justify-content: center;
