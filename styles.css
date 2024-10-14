@@ -21,6 +21,16 @@ body {
     background-color: burlywood;
 }
 
+#header {
+    padding: 20px 15px;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: maroon;
+    color: burlywood;
+    text-shadow: 5px 5px 5px black;
+}
+
 #board-panel {
     flex: 3;
     display: flex;
