@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
@@ -13,6 +14,7 @@ body {
 }
 
 #option-panel {
+    height: 100vh;
     flex: 1;
     display: flex;
     flex-direction: column;
