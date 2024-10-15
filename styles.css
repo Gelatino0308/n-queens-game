@@ -32,6 +32,18 @@ body {
     text-shadow: 5px 5px 5px black;
 }
 
+#mechanics-para {
+    padding: 25px;
+    text-align: justify;
+    font-size: 23px;
+    color: brown;
+    text-shadow: 0 1px 1px black;
+}
+
+#mechanics-para p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 #board-panel {
     height: 100vh;
     flex: 3;
