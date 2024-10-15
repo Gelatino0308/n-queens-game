@@ -27,7 +27,7 @@ body {
     font-size: 35px;
     text-align: center;
     font-weight: bolder;
-    background-color: maroon;
+    background: linear-gradient(red, brown, darkred);
     color: burlywood;
     text-shadow: 5px 5px 5px black;
 }
