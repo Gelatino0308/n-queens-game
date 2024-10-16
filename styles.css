@@ -32,15 +32,22 @@ body {
     text-shadow: 5px 5px 5px black;
 }
 
-#mechanics-para {
+#mechanics-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding: 25px;
     text-align: justify;
     font-size: 23px;
-    color: brown;
+    color: rgba(255, 0, 0, 0.8);
     text-shadow: 0 1px 1px black;
 }
 
-#mechanics-para p {
+#mechanics-div h3 {
+    color: rgba(255, 0, 0, 0.5);
+}
+
+#mechanics-div p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
