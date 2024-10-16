@@ -24,7 +24,7 @@ body {
 
 #header {
     padding: 20px 15px;
-    font-size: 35px;
+    font-size: 2.5rem;
     text-align: center;
     font-weight: bolder;
     background: linear-gradient(red, brown, darkred);
@@ -38,8 +38,7 @@ body {
     gap: 10px;
     padding: 25px;
     text-align: justify;
-    font-size: 23px;
-    color: rgba(255, 0, 0, 0.8);
+    font-size: 1.5rem;
     text-shadow: 0 1px 1px black;
 }
 
@@ -49,6 +48,7 @@ body {
 
 #mechanics-div p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgba(255, 0, 0, 0.8);
 }
 
 #board-panel {
