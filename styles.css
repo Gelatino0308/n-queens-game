@@ -58,6 +58,7 @@ body {
     gap: 40px;
     padding-top: 2em;
     flex: 1;
+    background: linear-gradient(darkred, red);
 }
 
 #button-div button {
@@ -66,8 +67,9 @@ body {
     padding: 8px;
     border-radius: 10px;
     border-width: 3px;
-    background: linear-gradient(rgba(144, 78, 9, 0.859), maroon);
-    color: burlywood;
+    /* background: linear-gradient(rgba(144, 78, 9, 0.859), maroon); */
+    background: linear-gradient(rgb(212, 141, 41), burlywood);
+    color: black;
     box-shadow: 0 5px 5px black;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
