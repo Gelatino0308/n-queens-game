@@ -40,6 +40,9 @@ body {
     text-align: justify;
     font-size: 1.5rem;
     text-shadow: 0 1px 1px black;
+    border-width: 8px 0px;
+    border-color: maroon;
+    border-style: inset;
 }
 
 #mechanics-div h3 {
