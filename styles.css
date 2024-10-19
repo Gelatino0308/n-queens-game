@@ -88,7 +88,8 @@ body {
     flex-direction: column;
     height: 40em;
     width: 40em;
-    border: 10px solid green;
+    /* border: 10px solid green; */
+    border: 10px solid brown;
     box-shadow: 0 0 10px black;
     overflow: hidden;
 }
@@ -109,11 +110,13 @@ body {
 }
 
 .darkcells {
-    background-color: rgb(67, 159, 67);
+    /* background-color: rgb(67, 159, 67); */
+    background-color: rgb(86, 48, 17);
 }
 
 .lightcells {
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
+    background-color: rgb(231, 206, 155);
 }
 
 .inRangeCells {
