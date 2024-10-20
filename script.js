@@ -52,7 +52,7 @@ board.addEventListener('dblclick', (e) => {
 
 function createQueen (target) {
     const queenImg = document.createElement("img");
-    queenImg.src = "queen.svg";
+    queenImg.src = "./images/queen.svg";
     queenImg.classList.add("queenIcon");
     target.style.alignItems = "flex-end";
     target.textContent = ''
