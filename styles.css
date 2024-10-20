@@ -92,7 +92,7 @@ body {
     width: 40em;
     /* border: 10px solid green; */
     border: 10px solid brown;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 40px black;
     overflow: hidden;
 }
 
