@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     background-color: burlywood;
     min-width: 500px;
+    box-shadow: 10px 0px 10px black;
 }
 
 #header {
