@@ -81,8 +81,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+#board-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image: url(./images/chess-board.jpg);
     background-size: cover;
+    background-position: center;
+    opacity: 0.8; 
+    z-index: -1;
 }
 
 #chess-board {
