@@ -18,7 +18,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: burlywood;
+    background-color: darkred;
     min-width: 500px;
     box-shadow: 10px 0px 10px black;
 }
@@ -42,6 +42,9 @@ body {
     font-size: 1.5rem;
     text-shadow: 0 1px 1px black;
     border: 8px inset maroon;
+    width: 95%;
+    align-self: center;
+    background-color: burlywood;
 }
 
 #mechanics-div h3 {
