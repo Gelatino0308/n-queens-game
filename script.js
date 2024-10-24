@@ -1,4 +1,5 @@
 const board = document.querySelector("#chess-board");
+const clearButton = document.querySelector("#clear-board");
 let boardSize = 8;
 const lastCellIndex = boardSize - 1;
 const cellArr = [];
@@ -125,3 +126,7 @@ function placeHighlight (rowIdx, colIdx) {
         cellArr[rowIdx][colIdx].textContent = "×";
     }
 }
+
+clearButton.addEventListener("click", () => {
+    clearAllHighlights();
+});
