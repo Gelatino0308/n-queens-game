@@ -138,12 +138,12 @@ body {
 
 .inRangeCells {
     /* background-color: rgb(255, 0, 0, 0.5); */
-    background: radial-gradient(pink, rgba(255, 0, 0, 0.8));
+    background: radial-gradient(yellow, brown);
     border: 1px inset black;
 
     font-size: 3em;
     font-weight: bolder;
-    color: maroon;
+    color: black;
 }
 
 .queenIcon {
