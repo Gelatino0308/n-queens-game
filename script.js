@@ -79,6 +79,7 @@ function clearAllHighlights(all) {
 
             if (all && cellArr[i][j].firstChild) {
                 cellArr[i][j].removeChild(cellArr[i][j].firstChild)
+                positionArr = []
                 cellArr[i][j].style.alignItems = "";
             }
         }
