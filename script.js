@@ -42,7 +42,7 @@ board.addEventListener('dblclick', (e) => {
     else {
         targetCell.removeChild(targetCell.firstChild);
         targetCell.style.alignItems = "";
-        clearAllHighlights();
+        clearAllHighlights(false);
 
         positionArr = positionArr.filter((loc) => loc.rowIndex !== rowIndex || loc.colIndex !== colIndex); 
         positionArr.forEach(({ rowIndex, colIndex}) => {
@@ -69,12 +69,17 @@ function findTargetIndexes (target) {
     }
 }
 
-function clearAllHighlights() {
+function clearAllHighlights(all) {
     for (let i = 0; i < boardSize; i++) {
         for (let j = 0; j < boardSize; j++) {
             cellArr[i][j].classList.remove("inRangeCells");
             if (!cellArr[i][j].querySelector("img")) {
                 cellArr[i][j].textContent = '';
+            }
+
+            if (all && cellArr[i][j].firstChild) {
+                cellArr[i][j].removeChild(cellArr[i][j].firstChild)
+                cellArr[i][j].style.alignItems = "";
             }
         }
     }
@@ -128,5 +133,5 @@ function placeHighlight (rowIdx, colIdx) {
 }
 
 clearButton.addEventListener("click", () => {
-    clearAllHighlights();
+    clearAllHighlights(true);
 });
