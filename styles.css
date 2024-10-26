@@ -106,7 +106,7 @@ body {
     height: 40em;
     width: 40em;
     /* border: 10px solid green; */
-    border: 10px solid brown;
+    border: 10px ridge brown;
     box-shadow: 0 0 40px black;
     overflow: hidden;
 }
