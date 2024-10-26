@@ -1,5 +1,7 @@
 const board = document.querySelector("#chess-board");
 const clearButton = document.querySelector("#clear-board");
+const resizeBoard = document.querySelector("#resize-board");
+
 let boardSize = 8;
 const lastCellIndex = boardSize - 1;
 const cellArr = [];
@@ -86,6 +88,28 @@ function clearAllHighlights(all) {
     }
 }
 
+function checkInput() {
+    let input = prompt("Enter the new dimension size (min: 2, max: 20):");
+
+    if (input) {
+        input = input.trim();
+        let parsedInput = parseInt(input);
+        if (Number.isInteger(parsedInput) && input === parsedInput.toString()) {
+            if (input < 2 || input > 20) {
+                alert("Input out of range. Enter dimension size greater than or equal to 2 and less than or equal to 20.");
+                checkInput();
+            }
+            else {
+                changeSize(input);
+            }
+        }
+        else {
+            alert("Only non-negative integer values from 2-20 are allowed. Please enter correct value!");
+            checkInput();
+        }
+    }
+}
+
 function highlightQueenRange(rowIdx, colIdx) {
     for (let i = 0; i < boardSize; i++) {
         if (!cellArr[i][colIdx].querySelector("img")) {
@@ -136,3 +160,5 @@ function placeHighlight (rowIdx, colIdx) {
 clearButton.addEventListener("click", () => {
     clearAllHighlights(true);
 });
+
+resizeBoard.addEventListener("click", checkInput);
