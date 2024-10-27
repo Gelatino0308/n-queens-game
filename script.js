@@ -7,27 +7,36 @@ const lastCellIndex = boardSize - 1;
 const cellArr = [];
 let positionArr = [];
 
-for (let i = 0; i < boardSize; i++){
-    const row =  document.createElement("div");
-    row.classList.add("grid-row");
-    board.appendChild(row);
-    const rowArr = [];
+changeSize(boardSize);
 
-    for (let j = 0; j < boardSize; j++) {
-        const cell = document.createElement("div");
-        cell.classList.add("grid-cell");
+function changeSize(boardSize) {
 
-        if (i % 2 === 0 && j % 2 === 1 || i % 2 === 1 && j % 2 === 0) {
-            cell.classList.add("darkcells");
-        }
-        else {
-            cell.classList.add("lightcells");
-        }
-
-        row.appendChild(cell);
-        rowArr.push(cell);
+    while (board.firstChild) {
+        board.removeChild(board.firstChild);
     }
-    cellArr.push(rowArr);
+
+    for (let i = 0; i < boardSize; i++){
+        const row =  document.createElement("div");
+        row.classList.add("grid-row");
+        board.appendChild(row);
+        const rowArr = [];
+
+        for (let j = 0; j < boardSize; j++) {
+            const cell = document.createElement("div");
+            cell.classList.add("grid-cell");
+
+            if (i % 2 === 0 && j % 2 === 1 || i % 2 === 1 && j % 2 === 0) {
+                cell.classList.add("darkcells");
+            }
+            else {
+                cell.classList.add("lightcells");
+            }
+
+            row.appendChild(cell);
+            rowArr.push(cell);
+        }
+        cellArr.push(rowArr);
+    }
 }
 
 board.addEventListener('dblclick', (e) => {
