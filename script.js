@@ -3,11 +3,11 @@ const clearButton = document.querySelector("#clear-board");
 const resizeBoard = document.querySelector("#resize-board");
 
 let boardSize = 8;
-const lastCellIndex = boardSize - 1;
+let lastCellIndex = boardSize - 1;
 const cellArr = [];
 let positionArr = [];
 
-changeSize(boardSize);
+changeSize(boardSize)
 
 function changeSize(boardSize) {
 
@@ -109,6 +109,8 @@ function checkInput() {
                 checkInput();
             }
             else {
+                boardSize = input;
+                lastCellIndex = boardSize - 1;
                 changeSize(input);
             }
         }
