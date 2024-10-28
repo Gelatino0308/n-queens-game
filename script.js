@@ -4,8 +4,8 @@ const resizeBoard = document.querySelector("#resize-board");
 
 let boardSize = 8;
 let lastCellIndex = boardSize - 1;
-const cellArr = [];
-let positionArr = [];
+let cellArr;
+let positionArr;
 
 changeSize(boardSize)
 
@@ -14,6 +14,8 @@ function changeSize(boardSize) {
     while (board.firstChild) {
         board.removeChild(board.firstChild);
     }
+    cellArr = [];
+    positionArr = [];
 
     for (let i = 0; i < boardSize; i++){
         const row =  document.createElement("div");
