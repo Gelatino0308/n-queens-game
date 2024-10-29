@@ -141,8 +141,8 @@ body {
     background: radial-gradient(yellow, brown);
     border: 1px inset black;
 
-    font-size: 3em;
-    font-weight: bolder;
+    /* font-size: 3em; */
+    font-weight: bold;
     color: black;
 }
 
