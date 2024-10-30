@@ -142,35 +142,36 @@ function highlightQueenRange(rowIdx, colIdx) {
         cellArr[rowIdx][i].classList.add("inRangeCells");
     }
 
-    highlightL2RDiagonal(rowIdx, colIdx, 0, 0);
-    highlightR2LDiagonal(rowIdx, colIdx, 0, lastCellIndex);
+    highlightL2RDiagonal(rowIdx, colIdx, 0, 0, fontSize);
+    highlightR2LDiagonal(rowIdx, colIdx, 0, lastCellIndex, fontSize);
 }
 
-function highlightL2RDiagonal (row, col, startRowIndex, startColIndex) {
+function highlightL2RDiagonal (row, col, startRowIndex, startColIndex, fontSize) {
     const indexDifference = row - col;
     indexDifference >= 0 ? startRowIndex = indexDifference : startColIndex = Math.abs(indexDifference);
 
     while (startRowIndex <= lastCellIndex && startColIndex <= lastCellIndex) {
-        placeHighlight(startRowIndex, startColIndex);
+        placeHighlight(startRowIndex, startColIndex, fontSize);
         startRowIndex += 1;
         startColIndex += 1;
     }
 }
 
-function highlightR2LDiagonal (row, col, startRowIndex, startColIndex) {
+function highlightR2LDiagonal (row, col, startRowIndex, startColIndex, fontSize) {
     const indexSum = row + col;
     indexSum <= lastCellIndex ? startColIndex = indexSum : startRowIndex = indexSum - lastCellIndex;
 
     while (startRowIndex <= lastCellIndex && startColIndex >= 0) {
-        placeHighlight(startRowIndex, startColIndex);
+        placeHighlight(startRowIndex, startColIndex, fontSize);
         startRowIndex += 1;
         startColIndex -= 1;
     }
 }
 
-function placeHighlight (rowIdx, colIdx) {
+function placeHighlight (rowIdx, colIdx, fontSize) {
     cellArr[rowIdx][colIdx].classList.add("inRangeCells");
     if (!cellArr[rowIdx][colIdx].querySelector("img")) {
+        cellArr[rowIdx][colIdx].style.fontSize = `${fontSize}px`;
         cellArr[rowIdx][colIdx].textContent = "×";
     }
 }
