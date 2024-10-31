@@ -125,7 +125,7 @@ function checkInput() {
 
 function highlightQueenRange(rowIdx, colIdx) {
     const cellSize = board.offsetWidth / boardSize;
-    const fontSize = cellSize / 2;
+    const fontSize = cellSize / 1.75;
 
     for (let i = 0; i < boardSize; i++) {
         if (!cellArr[i][colIdx].querySelector("img")) {

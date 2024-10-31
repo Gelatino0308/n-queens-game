@@ -72,7 +72,6 @@ body {
     padding: 8px;
     border-radius: 10px;
     border-width: 3px;
-    /* background: linear-gradient(rgba(144, 78, 9, 0.859), maroon); */
     background: linear-gradient(rgb(212, 141, 41), burlywood);
     color: black;
     box-shadow: 0 5px 5px black;
@@ -105,7 +104,6 @@ body {
     flex-direction: column;
     height: 40em;
     width: 40em;
-    /* border: 10px solid green; */
     border: 10px ridge brown;
     box-shadow: 0 0 40px black;
     overflow: hidden;
@@ -127,21 +125,16 @@ body {
 }
 
 .darkcells {
-    /* background-color: rgb(67, 159, 67); */
     background-color: rgb(86, 48, 17);
 }
 
 .lightcells {
-    /* background-color: lightgoldenrodyellow; */
     background-color: rgb(231, 206, 155);
 }
 
 .inRangeCells {
-    /* background-color: rgb(255, 0, 0, 0.5); */
     background: radial-gradient(yellow, brown);
     border: 1px inset black;
-
-    /* font-size: 3em; */
     font-weight: bold;
     color: black;
 }
