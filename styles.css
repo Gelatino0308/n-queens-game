@@ -144,3 +144,7 @@ body {
     height: 90%;
 }
 
+.intersectingCells {
+    filter: invert(18%) sepia(100%) saturate(7500%) hue-rotate(0deg) brightness(70%) contrast(100%);
+}
+

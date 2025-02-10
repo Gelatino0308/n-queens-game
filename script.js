@@ -4,8 +4,8 @@ const resizeBoard = document.querySelector("#resize-board");
 
 let boardSize = 8;
 let lastCellIndex = boardSize - 1;
-let cellArr;
-let positionArr;
+let cellArr = [];
+let positionArr = [];
 
 changeSize(boardSize)
 
@@ -14,8 +14,6 @@ function changeSize(boardSize) {
     while (board.firstChild) {
         board.removeChild(board.firstChild);
     }
-    cellArr = [];
-    positionArr = [];
 
     for (let i = 0; i < boardSize; i++){
         const row =  document.createElement("div");
@@ -49,6 +47,7 @@ board.addEventListener('dblclick', (e) => {
 
     if (!hasQueen) {
         createQueen(targetCell);
+        checkStraightIntersection(rowIndex, colIndex);
         positionArr.push({ rowIndex, colIndex });
         highlightQueenRange(rowIndex, colIndex);
     }
@@ -63,6 +62,27 @@ board.addEventListener('dblclick', (e) => {
         });
     }
 });
+
+function checkStraightIntersection (rowIdx, colIdx) {
+    let hasIntersection = false;
+    positionArr.forEach(({ rowIndex, colIndex}) => {
+        const icon = cellArr[rowIndex][colIndex].querySelector("img");
+        if (rowIndex === rowIdx) {
+            hasIntersection = true;
+            icon.classList.add("intersectingCells");
+        } 
+
+        if (colIndex === colIdx) {
+            hasIntersection = true;
+            icon.classList.add("intersectingCells");
+        }
+    });
+
+    if (hasIntersection) {
+        const lastIcon = cellArr[rowIdx][colIdx].querySelector("img");
+        lastIcon.classList.add("intersectingCells");
+    }
+}
 
 function createQueen (target) {
     const queenImg = document.createElement("img");
